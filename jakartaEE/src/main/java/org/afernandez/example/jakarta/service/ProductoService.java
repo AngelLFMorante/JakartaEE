@@ -1,5 +1,6 @@
 package org.afernandez.example.jakarta.service;
 
+import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -7,6 +8,7 @@ import java.util.List;
 import org.afernandez.example.jakarta.entity.Producto;
 
 @Stateless
+@LocalBean
 public class ProductoService {
 
     @PersistenceContext(unitName = "miUnidadPersistencia")

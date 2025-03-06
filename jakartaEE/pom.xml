@@ -7,19 +7,19 @@
     <groupId>com.example</groupId>
     <artifactId>myapp</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>war</packaging>
     <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-
     <dependencies>
-        <!-- Jakarta EE -->
+        <!-- Jakarta EE 10 API (incluye JAX-RS) -->
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>9.1.0</version>
+            <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
 
@@ -30,11 +30,11 @@
             <version>5.6.1.Final</version>
         </dependency>
 
-        <!-- JAX-RS (Jersey) -->
+        <!-- Hibernate Validator (opcional, para validaciones) -->
         <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>2.35</version>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.2.0.Final</version>
         </dependency>
 
         <!-- EJB API -->
@@ -43,19 +43,20 @@
             <artifactId>jakarta.ejb-api</artifactId>
             <version>4.0.1</version>
         </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml> <!-- Especifica la ruta del web.xml -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
