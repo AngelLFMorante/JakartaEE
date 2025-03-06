@@ -78,7 +78,59 @@ Este es un proyecto base diseñado para entrevistas técnicas, proporcionando un
 
 ---
 
-## 🎤 Preguntas de Entrevista y Respuestas
+## 🔥 5 Preguntas Técnicas de Entrevista sobre Jakarta EE, JAX-RS, EJB y JPA
+
+### 1️⃣ ¿Cuál es la diferencia entre @Stateless y @Singleton en EJB?
+**Respuesta:**
+
+ - @Stateless: Se crea una nueva instancia del bean para cada solicitud. Es útil cuando no es necesario mantener estado entre llamadas.
+ - @Singleton: Existe una única instancia compartida en toda la aplicación, ideal para cachés o configuraciones globales.
+
+### 2️⃣ ¿Cómo maneja JAX-RS la serialización de respuestas en JSON?
+**Respuesta:**
+ - JAX-RS usa MessageBodyWriter y MessageBodyReader para convertir objetos Java a JSON. Por defecto, usa Jackson o JSON-B si están disponibles en el classpath.
+
+ - Ejemplo de una API REST con JAX-RS que devuelve JSON:
+    ```java
+            @GET
+            @Produces(MediaType.APPLICATION_JSON)
+            public List<Producto> obtenerTodos() {
+            return productoService.obtenerTodos();
+            }
+    ```
+
+### 3️⃣ ¿Qué hace @PersistenceContext en JPA y por qué es importante?
+**Respuesta:**
+
+   - @PersistenceContext inyecta un EntityManager administrado por el contenedor.
+    Permite realizar operaciones de persistencia sin necesidad de gestionar transacciones manualmente.
+    Importante porque evita fugas de memoria y problemas de concurrencia.
+
+### 4️⃣ ¿Cómo se maneja la transaccionalidad en EJB con JPA?
+**Respuesta:**
+
+   - EJB usa transacciones gestionadas por contenedor por defecto.
+    Métodos en @Stateless son transaccionales automáticamente.
+    Podemos usar @TransactionAttribute para definir el comportamiento:
+        ```java
+            @TransactionAttribute(TransactionAttributeType.REQUIRED)
+            public void guardar(Producto producto) {
+                entityManager.persist(producto);
+            }
+        ```
+   - REQUIRED: Usa la transacción actual o crea una nueva si no existe.
+   - REQUIRES_NEW: Siempre inicia una nueva transacción.
+
+### 5️⃣ ¿Cómo se configura la inyección de dependencias en CDI?
+**Respuesta:**
+
+   - Se usa @Inject para inyectar dependencias automáticamente.
+   - Se pueden definir distintos alcances (scopes) como @ApplicationScoped, @RequestScoped, etc.
+   - Se necesita un archivo beans.xml en WEB-INF o META-INF para que CDI funcione.
+
+---
+
+## 🎤 Preguntas del proyecto 
 
 ### 1️⃣ ¿Qué es Jakarta EE y en qué se diferencia de Java EE?
 **Respuesta:** Jakarta EE es la evolución de Java EE, ahora bajo la Fundación Eclipse. Ofrece mejoras en modularidad, uso de CDI y actualizaciones en APIs como JAX-RS.
