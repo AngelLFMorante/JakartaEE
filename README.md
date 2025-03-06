@@ -61,19 +61,19 @@ Este es un proyecto base diseñado para entrevistas técnicas, proporcionando un
 
 ### 🔍 Obtener todos los productos
 ```sh
-  curl -X GET http://localhost:8080/api/productos -H "Accept: application/json"
+  curl -X GET http://localhost:8080/myapp-1.0-SNAPSHOT/api/productos -H "Accept: application/json"
 ```
 
 ### ➕ Crear un producto
 ```sh
-  curl -X POST http://localhost:8080/api/productos \
+  curl -X POST http://localhost:8080/myapp-1.0-SNAPSHOT/api/productos \
      -H "Content-Type: application/json" \
      -d '{"nombre": "Monitor", "precio": 199.99}'
 ```
 
 ### ❌ Eliminar un producto por ID
 ```sh
-  curl -X DELETE http://localhost:8080/api/productos/1
+  curl -X DELETE http://localhost:8080/myapp-1.0-SNAPSHOT/api/productos/1
 ```
 
 ---
